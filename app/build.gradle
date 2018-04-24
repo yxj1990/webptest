@@ -12,12 +12,27 @@ android {
     buildToolsVersion "23.0.3"
 
     signingConfigs {
-        signingConfig {
-            keyAlias 'xxx'
-            keyPassword 'xxx'
-            storeFile file('xxx')
-            storePassword 'xxx'
+        debug {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('../debug.keystore')
+            storePassword 'android'
         }
+        release {
+            keyAlias 'homelink'
+            keyPassword 'homelink15120011266'
+            storeFile file('../ziruke.keystore')
+            storePassword 'ziruke15120011266'
+        }
+//    }
+
+//    signingConfigs {
+//        signingConfig {
+//            keyAlias 'xxx'
+//            keyPassword 'xxx'
+//            storeFile file('xxx')
+//            storePassword 'xxx'
+//        }
         defaultConfig {
             applicationId "com.yangxj.webptest"
             minSdkVersion 15
@@ -29,7 +44,7 @@ android {
             buildConfigField "boolean", "LEO_DEBUG", "true"
             buildConfigField "String", "API_SERVER_URL", RELEASE_API_SERVER_URL
             buildConfigField "String", "API_SERVER_URL_MALL", RELEASE_API_SERVER_URL_MALL
-            signingConfig signingConfigs.signingConfig
+
             manifestPlaceholders = [CHANNEL_NAME: "yingyongbao"]
             ndk {
                 moduleName "webptest"  //设置库(so)文件名称
@@ -47,6 +62,7 @@ android {
                 minifyEnabled true
                 zipAlignEnabled true
                 shrinkResources true
+                signingConfig signingConfigs.release
                 proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             }
             debug {
@@ -55,6 +71,7 @@ android {
                 buildConfigField 'String', 'IM_SERVER_HOST', RELEASE_IM_SERVER_HOST
                 buildConfigField 'int', 'IM_SERVER_PORT', RELEASE_IM_SERVER_PORT
                 buildConfigField "boolean", "LEO_DEBUG", RELEASE_LEO_DEBUG
+                signingConfig signingConfigs.debug
             }
         }
 
