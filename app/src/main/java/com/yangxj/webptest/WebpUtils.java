@@ -11,7 +11,7 @@ import java.nio.ByteBuffer;
 public class WebpUtils {
 
 	static {
-		System.loadLibrary("webptest");
+		System.loadLibrary("webp");
 	}
 
 	public static Bitmap webpToBitmap(byte[] encoded) {

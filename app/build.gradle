@@ -10,6 +10,7 @@ def verCode=14
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
+
     signingConfigs {
         signingConfig {
             keyAlias 'xxx'
@@ -21,6 +22,7 @@ android {
             applicationId "com.yangxj.webptest"
             minSdkVersion 15
             targetSdkVersion 23
+            multiDexEnabled true
             versionCode verCode
             versionName APP_VERSION
             resValue("string", "app_version", APP_VERSION)
@@ -104,6 +106,11 @@ android {
         compile fileTree(include: ['*.jar'], dir: 'libs')
         compile files('libs/libwebp.jar')
         testCompile 'junit:junit:4.12'
-        compile 'com.android.support:appcompat-v7:23.4.0'
+//        compile 'com.Android.support:support-v4:22.2.1'
+//        compile 'com.android.support:appcompat-v7:23.4.0'
+
+//        compile ('com.Android.support:appcompat-v7:22.2.1'){
+//            exclude group: 'com.android.support', module: 'support-v4'
+//        }
     }
 }
